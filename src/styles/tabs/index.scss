@@ -1,0 +1,36 @@
+.tab {
+    &__base {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 10px;
+        flex: 1;
+        font-size: 25px;
+        border: 1px solid black;
+        margin-right: 5px;
+        &--desktop {
+            @extend .tab__base;
+            display: none;
+            @media (min-width: 700px) {
+                display: flex;
+            }
+        }
+
+        &--mobile {
+            @extend .tab__base;
+            flex: 0 1 50px;
+            width: 50px;
+            height: 100%;
+            @media (min-width: 700px) {
+                display: none;
+            }
+        }
+    }
+
+    &__list {
+        display: flex;
+        justify-content: center;
+        flex: 1;
+        height: 100%;
+    }
+}

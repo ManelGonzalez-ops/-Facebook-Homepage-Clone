@@ -1,0 +1,11 @@
+.actions__list {
+  display: flex;
+}
+
+.actions__item {
+  margin-right: 0.5rem;
+}
+
+.actions__item:last-child {
+  margin-right: 0;
+}

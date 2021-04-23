@@ -1,0 +1,29 @@
+@import "./config/reset.scss";
+
+@import "./variables.scss";
+
+@import "./mixins.scss";
+
+@import "./navbar/index.scss";
+@import "./navbar/search.scss";
+@import "./icon/iconwrapper.scss";
+@import "./navbar/actions.scss";
+@import "./tabs/index.scss";
+@import "./popover/popover.scss";
+@import "./navbar/search.scss";
+@import "./inputs/inputBase";
+@import "./listItem/ListItem.scss";
+@import "./menus/menuDinamic.scss";
+@import "./general/separator.scss";
+@import "./general/text-items.scss";
+@import "./main/main.scss";
+@import "./menus/menuNotifications.scss";
+@import "./general/utils.scss";
+@import "./menus/menuMessenger.scss";
+@import "./inputs/inputSearch.scss";
+@import "./menus/create.scss";
+@import "./menus/config.scss";
+
+.App{
+    height: 150vh;
+}

@@ -1,0 +1,10 @@
+.menuNotifications {
+  background-color: lightskyblue;
+  height: 150px;
+}
+
+.menuNotifications__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}

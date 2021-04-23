@@ -1,0 +1,10 @@
+.textItem-Multiline, .textItem-Multiline--big {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 114%;
+}
+
+.textItem-Multiline--big {
+  padding: 8px 0;
+}

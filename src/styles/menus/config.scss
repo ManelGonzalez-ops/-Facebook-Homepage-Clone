@@ -1,0 +1,11 @@
+.config {
+    &__header {
+        padding: 8px;
+        display: flex;
+        align-items: center;
+    }
+
+    &__title {
+        font-size: 24px;
+    }
+}

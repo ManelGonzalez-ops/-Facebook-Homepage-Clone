@@ -1,0 +1,13 @@
+.actions {
+    &__list {
+        display: flex;
+    }
+
+    &__item {
+        margin-right: 0.5rem;
+
+        &:last-child{
+            margin-right: 0;
+        }
+    }
+}

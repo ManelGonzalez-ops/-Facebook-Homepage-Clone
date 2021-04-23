@@ -1,0 +1,56 @@
+.textItem {
+    
+    &-Multiline {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        flex: 1;
+
+        &--big {
+            @extend .textItem-Multiline;
+            padding: 8px 0;
+        }
+
+        &__title {
+            line-height: normal;
+            position: relative;
+            top: -2px;
+        }
+
+        &__subtitle {
+            font-size: 13px;
+            line-height: 1.2308 !important;
+        }
+        &__text {
+            font-size: 15px;
+
+            &--sm--accent {
+                font-size: 13px;
+                font-weight: 500;
+                color: $accent;
+                padding-top: 4px;
+                flex: 1;
+                //both necesary to enable ellipsis
+                white-space: nowrap;
+                text-overflow: ellipsis;
+                overflow: hidden;
+            }
+        }
+
+        &__footerWrapper {
+            display: flex;
+            align-items: baseline;
+            overflow: hidden;
+        }
+    }
+}
+.textHeader {
+    font-size: 24px;
+    color: $header-dark;
+}
+.textSubheader {
+    padding: 20px 8px 4px;
+    font-size: 17px;
+    color: $subheader-dark;
+    font-weight: 600;
+}

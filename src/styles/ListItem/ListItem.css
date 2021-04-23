@@ -1,0 +1,30 @@
+.listItem, .listItem--big {
+  display: flex;
+  align-items: center;
+  height: 52px;
+  padding: 0.5rem;
+  border: 1px solid silver;
+  border-radius: 8px;
+}
+
+.listItem__image, .listItem__icon, .listItem--big__image {
+  width: 36px;
+  height: 100%;
+  border-radius: 100%;
+  margin-right: 12px;
+}
+
+.listItem__text {
+  flex: 1;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.listItem--big {
+  height: 76px;
+}
+
+.listItem--big__image {
+  width: 60px;
+}

@@ -1,0 +1,8 @@
+@mixin menuBoxShadow() {
+    box-shadow: 0 12px 28px 0 $shadow-2, 0 2px 4px 0 $shadow-1, inset 0 0 0 1px $shadow-inset;
+}
+
+@mixin viewHelper(){
+    position: relative;
+    left: -500px;
+}

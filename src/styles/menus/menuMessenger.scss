@@ -1,0 +1,33 @@
+.menuMessenger {
+    padding: 8px;
+    background-color: white;
+    @include menuBoxShadow();
+
+    //temporary
+    @include viewHelper();
+    
+    &__header {
+        display: flex;
+        align-items: center;
+        padding: 8px;
+    }
+    &__title {
+        flex: 1;
+    }
+
+    &__actions {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        padding-left: 16px;
+    }
+
+    &__search {
+        padding: 8px;
+        height: 52px;
+        input {
+            background-color: aquamarine;
+        }
+    }
+}

@@ -1,0 +1,14 @@
+.menuCreate {
+    background-color: azure;
+    padding: 8px;
+    
+    & *{
+        line-height: normal;
+    }
+    //temporary
+    @include viewHelper();
+
+    &__header{
+        padding: 8px;
+    }
+}

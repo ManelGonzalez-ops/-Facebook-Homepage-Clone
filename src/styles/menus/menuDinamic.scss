@@ -1,0 +1,58 @@
+.menuDyn {
+    background: antiquewhite;
+    transition: height 0.3s ease 0s;
+    overflow: hidden;
+    position: relative;
+    border-radius: 8px;
+    @include viewHelper();
+}
+.principal-enter {
+    transform: translateX(-100%);
+    //avoid stacking
+    position: absolute;
+    width: calc(100% - 16px);
+    display: flex;
+    flex-direction: column;
+}
+.principal-enter-active {
+    transform: translateX(0);
+    transition: transform 300ms ease;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+.principal-exit {
+    transform: translateX(0);
+    position: absolute;
+    width: calc(100% - 16px);
+    display: flex;
+    flex-direction: column;
+}
+.principal-exit-active {
+    transform: translateX(-100%);
+    transition: transform 300ms ease;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.prueba1-enter {
+    transform: translateX(100%);
+    position: absolute;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+.prueba1-enter-active {
+    transform: translateX(0);
+    transition: transform 300ms ease;
+}
+.prueba1-exit {
+    transform: translateX(0);
+    position: absolute;
+    width: 100%;
+}
+.prueba1-exit-active {
+    transform: translateX(100%);
+    transition: transform 300ms ease;
+}

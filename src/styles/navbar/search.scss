@@ -1,0 +1,60 @@
+.search {
+    display: flex;
+    align-items: center;
+    height: 100%;
+
+    span:first-of-type {
+        margin-right: 0.5rem;
+    }
+    span:nth-last-of-type(2) {
+        margin-right: 1rem;
+    }
+}
+
+.searchResults {
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 12px 12px $shadow-2, inset 0 0 0 0 $shadow-inset;
+    height: 100%;
+    width: 100%;
+    padding: 0.5rem;
+    border-radius: 8px;
+    overflow: hidden;
+    background: mediumspringgreen;
+    &__header {
+        //ojo cuando dlex-direction es column, flex 1 hará que coja todo el spacio vertical
+        //flex: 1;
+        display: flex;
+        align-items: center;
+        height: 40px;
+    }
+
+    &__subheader {
+        display: flex;
+        padding: 0 0.5rem;
+        padding-top: 20px;
+        padding-bottom: 12px;
+        & > h4 {
+            flex: 1;
+            font-size: $header-size;
+        }
+        &:last-child {
+        }
+    }
+
+    &__backIcon {
+        margin-right: 1rem;
+        animation: moveLeft 0.2s ease forwards;
+        transform: translateX(120%);
+        font-size: 22px;
+    }
+}
+
+@keyframes moveLeft {
+    from {
+        transform: translateX(120%);
+    }
+    to {
+        transform: translateX(10%);
+    }
+}
