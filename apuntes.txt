@@ -1,0 +1,16 @@
+min-width 280px
+max-width 360px
+flex-basis 360px
+flex-shrink 9999
+
+
+//main
+padding left 32px
+padding right 32px
+flex 1 1 744
+
+900, 1100
+
+
+content inside main
+min-height = [>700=500, 700-790=590, <700 = 680]

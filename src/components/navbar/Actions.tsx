@@ -10,9 +10,14 @@ import { MenuDinamic } from '../Menus/Settings'
 import { Notifications } from '../Menus/Notifications'
 import { Messenger } from '../Menus/Messenger'
 import { Create } from '../Menus/Create'
+import { ListItem } from '../list-items/ListItem'
+import { useViewport } from '../Utils/useViewport'
+const src = "https://scontent-mad1-1.xx.fbcdn.net/v/t31.18172-1/cp0/c0.7.40.40a/p40x40/28515963_1835476116465174_61291875568430836_o.jpg?_nc_cat=103&ccb=1-3&_nc_sid=dbb9e7&_nc_ohc=0TTomisEccMAX_qNT6F&_nc_ht=scontent-mad1-1.xx&tp=27&oh=e01140069e3cd221933151d5112ffa71&oe=60A91A62"
 export const Actions = () => {
     const [open, setOpen] = useState("")
     const [viewId, setViewId] = useState(1)
+
+    const [width] = useViewport()
 
     const anchor = useRef(null)
 
@@ -24,22 +29,38 @@ export const Actions = () => {
     }
     return (
         <div className="actions__list" ref={anchor}>
-            <IconWrapper classname="actions__item"
+
+            {
+                width > 1260 &&
+                <div
+                    className="actions__item hoverable"
+                >
+                    <div
+                        className="actions__profile"
+                    >
+                        <img src={src} className="listItem__image--xs" />
+                        <p
+                            className="actions__profileTitle"
+                        >Manel</p>
+                    </div>
+                </div>}
+            <IconWrapper classname="actions__item hoverable"
                 onClick={() => { setOpen("create") }}
+
             >
                 <BiPlus />
             </IconWrapper>
-            <IconWrapper classname="actions__item"
+            <IconWrapper classname="actions__item hoverable"
                 onClick={() => { setOpen("messenger") }}
             >
                 <RiMessengerFill />
             </IconWrapper>
-            <IconWrapper classname="actions__item"
+            <IconWrapper classname="actions__item hoverable"
                 onClick={() => { setOpen("notifications") }}
             >
                 <BsBellFill />
             </IconWrapper>
-            <IconWrapper classname="actions__item"
+            <IconWrapper classname="actions__item hoverable"
                 onClick={() => { setOpen("settings") }}
             >
                 <VscTriangleDown />

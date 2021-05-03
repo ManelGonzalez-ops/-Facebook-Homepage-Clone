@@ -21,17 +21,18 @@ export const Navbar = () => {
             >
                 <Search />
             </div>
-            <div
+            {/* <div
                 className="nav__space"
-            />
+            /> */}
             <div
                 className="nav__tabs"
             >
                 <Tabs />
             </div>
-            <div
+            {/* <div
                 className="nav__space--small"
-            />
+            /> */}
+            <div className="spacerr"/>
             <div
                 className="nav__actions"
             >

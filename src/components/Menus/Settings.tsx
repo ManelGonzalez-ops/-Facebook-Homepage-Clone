@@ -6,23 +6,70 @@ import { ListItemBig } from '../list-items/ListItemBig'
 import { useClosePopover } from '../Utils/useClosePopover'
 import { TextMultiline, TextMultilineBig } from '../text-items/TextMultiline'
 import { Separator } from '../Utils/Separator'
-import { Prueba1 } from './Prueba1'
+import { Config } from './settings/Config'
 import { IoIosArrowForward } from "react-icons/io"
 import { IconWrapper } from '../icons/iconWrapper'
 import { RiMessage2Fill } from "react-icons/ri"
-import { Config } from './settings/Config'
+import { Accesibility } from './settings/Accesibility'
+import { Help } from './settings/Help'
+import { Keyboard } from './settings/Keyboard'
+//icons
+//MdSettings
+//AiFillQuestionCircle
+//FaMoon
+//ImExit
 
+export interface menuView {
+    title: string,
+    handleGoBack: () => void
+}
+export interface MenuViewWithNesting {
+    title: string,
+    handleGoBack: () => void,
+    handleGoForward: (id: number) => void
+}
 interface menuDinamic {
     popoverRef?: any,
     close: () => void,
-    // viewId: number,
-    // setViewId: Dispatch<SetStateAction<number>>,
-
+    handleGoForward?: (id: number) => void
 }
+
+
 export const MenuDinamic: React.FC<menuDinamic> = ({ popoverRef, close }) => {
 
     useClosePopover({ popoverRef, action: close })
-
+    const menuViewsTemplate = [
+        {
+            id: 1,
+            Component: Principal,
+            title: "hola",
+            classNameTransition: "principal"
+        },
+        {
+            id: 2,
+            Component: Config,
+            title: "Configuració i Privacitat",
+            classNameTransition: "prueba1"
+        },
+        {
+            id: 3,
+            Component: Help,
+            title: "Help & Support",
+            classNameTransition: "prueba1"
+        },
+        {
+            id: 4,
+            Component: Accesibility,
+            title: "Display & Accessibility",
+            classNameTransition: "prueba1",
+        },
+        {
+            id: 5,
+            Component: Keyboard,
+            title: "Keyboard",
+            classNameTransition: "prueba1"
+        }
+    ]
     const [viewId, setViewId] = useState(1)
 
     const menuRef = useRef(null)
@@ -30,25 +77,28 @@ export const MenuDinamic: React.FC<menuDinamic> = ({ popoverRef, close }) => {
     const updateHeight = (el: HTMLElement) => {
         setMenuHeight(el.offsetHeight)
     }
+    const handleGoBack = () => {
+        if (viewId === 5) {
+            setIsInKeyboard(true)
+            setViewId(4)
+        } else {
+            setIsInKeyboard(false)
+            setViewId(1)
+        }
+    }
 
-    const menuViews = [
-        {
-            id: 1,
-            Component: Principal,
-            title: "hola",
-            classNameTransition: "principal" 
-        },
-        {
-            id: 2,
-            Component: Prueba1,
-            title: "comeme el culo",
-            classNameTransition: "principal" 
-        },
-        // {
-        //     id: 3,
-        //     Component: Config
-        // }
-    ]
+    const handleGoForward = (id: number) => {
+        if (id === 5) {
+            setIsInKeyboard(true)
+            setViewId(5)
+        } else {
+            setViewId(id)
+        }
+    }
+
+    const [menuViews, setMenuViews] = useState(menuViewsTemplate)
+
+    const [isInKeyboard, setIsInKeyboard] = useState(false)
 
 
     return (
@@ -59,11 +109,48 @@ export const MenuDinamic: React.FC<menuDinamic> = ({ popoverRef, close }) => {
         >
 
             {
-                menuViews.map(({ Component, id, title }) => (
-                    <Component selected={viewId === id}
-                        {...{ updateHeight, setViewId, title }}
-                    />
-                ))
+                menuViews.map(({ Component, id, title, classNameTransition, ...rest }) => {
+                    if (id === 4) {
+                        return (<CSSTransition
+                            in={id === viewId}
+                            timeout={400}
+                            //mountOnEnter
+                            classNames={isInKeyboard ? "principal" : "prueba1"}
+                            unmountOnExit
+                            onEnter={updateHeight}
+                        >
+                            <div
+                                className="transition-wrapper"
+                                style={{ padding: "8px" }}
+                            >
+                                <Accesibility
+                                    {...{ title, handleGoBack, handleGoForward }}
+                                />
+                            </div>
+                        </CSSTransition>)
+                    }
+                    return (
+
+                        <CSSTransition
+                            in={id === viewId}
+                            timeout={400}
+                            //mountOnEnter
+                            classNames={classNameTransition}
+                            unmountOnExit
+                            onEnter={updateHeight}
+                        >
+                            <div
+                                className="transition-wrapper"
+                                style={{ padding: "8px" }}
+                            >
+                                <Component
+                                    {...{ title, handleGoBack, handleGoForward }}
+                                />
+                            </div>
+                        </CSSTransition>
+
+                    )
+                })
             }
 
 
@@ -84,89 +171,63 @@ const transitionStyles = {
 }
 
 interface menuDinamicView {
-    selected: boolean,
-    updateHeight: (el: HTMLElement) => void,
-    setViewId: Dispatch<SetStateAction<number>>
+    handleGoForward: (id: number) => void
 }
-const Principal: React.FC<menuDinamicView> = ({ selected, updateHeight, setViewId }): any => {
+const Principal: React.FC<menuDinamicView> = ({ handleGoForward }): any => {
 
     return (
-        <CSSTransition
-            in={selected}
-            timeout={400}
-            //mountOnEnter
-            classNames="principal"
-            unmountOnExit
-            onEnter={updateHeight}
-        >
-            <div
-                className="transition-wrapper"
-                style={{ padding: "8px" }}
-            >
-                <ListItemBig
-                    image={<img
-                        className="listItem--big__image"
-                        src="https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_1280.png" />}
-                    renderText={() => <TextMultilineBig
-                        title="Julia Pavan"
-                        subtitle="comeme el culo"
+        <>
+            <ListItemBig
+                image={<img
+                    className="listItem--big__image"
+                    src="https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_1280.png" />}
+                renderText={() => <TextMultilineBig
+                    title="Julia Pavan"
+                    subtitle="comeme el culo"
+                />}
+
+            />
+            <div>
+                <Separator />
+                <ListItem
+
+                    type="icon"
+                    renderText={() => <TextMultiline
+                        title="Opina"
+                        subtitle="Help us to improve facebook"
                     />}
+                    icon={<IconWrapper
+                        height={36}
+                        width={36}
 
-                />
-                <div>
-                    <Separator />
-                    <ListItem
-
-                        type="icon"
-                        renderText={() => <TextMultiline
-                            title="Opina"
-                            subtitle="Help us to improve facebook"
-                        />}
-                        icon={<IconWrapper
-                            height={36}
-                            width={36}
-
-                        >
-                            <RiMessage2Fill />
-                        </IconWrapper>}
-                    />
-                    <Separator />
-                </div>
-                {
-                    [1, 2, 3].map((id, index) => (
-                        <ListItem
-                            key={index}
-                            renderText={() => "Julia Pavan"}
-                            image={
-                                < img
-                                    className="listItem__image"
-                                    src="https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_1280.png" />
-                            }
-                            endIcon={
-                                <IoIosArrowForward
-                                    style={{ transform: "scale(1.5)" }}
-                                    onClick={() => { setViewId(id) }}
-                                />
-                            }
-                        />
-                    ))
-                }
-            </div>
-            {/* {
-                (animState: any) =>
-                    <div
-                        style={{ ...defaultStyles, ...transitionStyles[animState] }}
                     >
-                        {
-                            [...Array(3)].map((_, index) => (
-                                <ListItem
-                                    key={index}
-                                    text="Julia Pavan"
-                                    image="https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_1280.png"
-                                />
-                            ))
+                        <RiMessage2Fill
+                        />
+                    </IconWrapper>}
+                />
+                <Separator />
+            </div>
+            {
+                [2, 3, 4].map((id, index) => (
+                    <ListItem
+                        key={index}
+                        renderText={() => "Julia Pavan"}
+                        image={
+                            < img
+                                className="listItem__image"
+                                src="https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_1280.png" />
                         }
-                    </div>} */}
-        </CSSTransition>
+                        endIcon={
+                            <IoIosArrowForward
+                                style={{ transform: "scale(1.5)" }}
+                                onClick={() => { handleGoForward(id) }}
+                                className="icon--centered"
+                            />
+                        }
+                    />
+                ))
+            }
+
+        </>
     )
 }

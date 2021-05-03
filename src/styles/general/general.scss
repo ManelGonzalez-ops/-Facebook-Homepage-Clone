@@ -1,0 +1,43 @@
+.badge-wrapper {
+    position: relative;
+}
+.badge-placer {
+    position: absolute;
+    bottom: -5px;
+    right: 7px;
+}
+
+.icon--centered {
+    display: flex;
+    align-self: center;
+}
+.icon {
+    transition: fill 0.3s ease;
+    &--selected {
+        @extend .icon;
+        fill: $accent;
+        color: $accent;
+    }
+}
+
+.hoverable {
+    cursor: pointer;
+    background: $hover-overlay;
+    transition: all 0.1s ease;
+    &:hover {
+        background: $non-media-pressed;
+    }
+}
+
+.hoverable-tab {
+    cursor: pointer;
+    transition-property: all;
+    transition-timing-function: $fds-animation-fade-out;
+    transition-delay: $fds-duration-extra-extra-short-out;
+    &:hover {
+        background: $hover-overlay;
+        transition-property: all;
+        transition-timing-function: $fds-animation-fade-in;
+        transition-delay: $fds-duration-extra-extra-short-in;
+    }
+}

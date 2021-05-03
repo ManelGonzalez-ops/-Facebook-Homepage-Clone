@@ -3,10 +3,11 @@ import { MdKeyboardBackspace } from 'react-icons/md'
 import { IconWrapper } from '../../icons/iconWrapper'
 
 interface configHeader {
-    setViewId: Dispatch<SetStateAction<number>>,
-    title: string
+    title: string,
+    parentMenuId?: number
+    handleGoBack: () => void
 }
-export const ConfigHeader: React.FC<configHeader> = ({ setViewId, title }) => {
+export const ConfigHeader: React.FC<configHeader> = ({ title, handleGoBack }) => {
     return (
         <div className="config__header">
             <IconWrapper
@@ -14,8 +15,7 @@ export const ConfigHeader: React.FC<configHeader> = ({ setViewId, title }) => {
                 width={36}
             >
                 <MdKeyboardBackspace
-                    onClick={() => { 
-                        setViewId(1) }}
+                    onClick={handleGoBack}
                 />
             </IconWrapper>
             <h2 className="config__title">{title}</h2>

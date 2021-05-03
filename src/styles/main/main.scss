@@ -1,34 +1,133 @@
 .grid-main {
     height: 100%;
     width: 100%;
+    // grid-template-rows: 1fr;
+    display: flex;
+    background-color: $bg-pnp;
 
+    .contentMain {
+        background-color: lightcyan;
+        flex-grow: 1;
+        flex-shrink: 1;
+        flex-basis: 744px;
+        padding: 0 32px;
+        display: flex;
+        justify-content: center;
+        //important to make childs not overflow flex contianer
+        min-width: 0;
+        padding-top: 16px;
+        &__wrapperOuter {
+            display: flex;
+            flex-direction: column;
+            min-width: 0;
+            align-items: center;
+        }
+        &__wrapper {
+            width: 500px;
+            max-width: 100%;
+            @media (min-height: 700px) {
+                width: 590px;
+            }
+            @media (min-height: 790px) {
+                width: 680px;
+            }
+        }
+    }
+    .asideRight,
+    .asideLeft {
+        display: none;
+    }
+    .asideLeft {
+        margin-top: 16px;
+        padding-left: 8px;
+    }
     @media (min-width: 900px) {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        grid-template-areas: "mainContent mainContent asideRight";
+        // display: grid;
+        // grid-template-columns: repeat(3, 1fr);
+        // grid-template-areas: "mainContent mainContent asideRight";
+
+        .asideRight {
+            display: unset;
+            min-width: 280px;
+            max-width: 360px;
+            flex-basis: 360px;
+            flex-shrink: 9999;
+            position: relative;
+        }
     }
 
     @media (min-width: 1100px) {
-        grid-template-columns: repeat(4, 1fr);
-        grid-template-areas: "asideLeft mainContent mainContent asideRight";
+        // grid-template-columns: repeat(4, 1fr);
+        // grid-template-areas: "asideLeft mainContent mainContent asideRight";
+        .asideLeft {
+            display: unset;
+            min-width: 280px;
+            max-width: 360px;
+            flex-basis: 360px;
+            flex-shrink: 9999;
+            position: relative;
+        }
     }
 
-    .contentMain {
-        grid-area: mainContent;
-        background-color: lightcyan;
-        width: 100%;
-        height: 100%;
+    .aside-links {
+        position: sticky;
+        overflow: scroll;
+        top: 56px;
+        height: calc(100vh - 56px);
+        @include customScrollbar();
+        will-change: scroll-position;
     }
-    .asideRight {
-        grid-area: asideLeft;
-        background-color: lightseagreen;
-        width: 100%;
+    .scrollbar-mask {
+        position: absolute;
+        display: block;
         height: 100%;
+        width: 10px;
+        right: 20px;
+        z-index: 30;
+        top: 0;
+        transform: translateX(20px);
+        pointer-events: none;
+        background-color: transparent;
+        visibility: hidden;
+        &1 {
+            @extend .scrollbar-mask;
+            right: 20px;
+            transform: translateX(20px);
+
+            &--hidden {
+                @extend .scrollbar-mask;
+                background-color: #f0f2f5;
+                visibility: visible;
+            }
+        }
+        &2 {
+            @extend .scrollbar-mask;
+            right: 20px;
+            transform: translateX(20px);
+            &--hidden {
+                @extend .scrollbar-mask;
+                background-color: #f0f2f5;
+                visibility: visible;
+            }
+        }
     }
-    .asideLeft {
-        grid-area: asideLeft;
-        background-color: lightseagreen;
-        width: 100%;
-        height: 100%;
-    }
+
+    // .contentMain {
+    //     grid-area: mainContent;
+    //     background-color: lightcyan;
+    //     width: 100%;
+    //     height: 2500px;
+    // }
+    // .asideRight {
+    //     grid-area: asideRight;
+    //     width: 100%;
+
+    //     //overflow: scroll;
+    // }
+    // .asideLeft {
+    //     grid-area: asideLeft;
+    //     background-color: lightseagreen;
+    //     width: 100%;
+    //     height: 100%;
+    // }
 }

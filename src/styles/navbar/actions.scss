@@ -1,13 +1,35 @@
 .actions {
     &__list {
         display: flex;
+        align-items: center;
     }
 
     &__item {
-        margin-right: 0.5rem;
+        margin-right: 8px;
+        border-radius: 50px;
 
-        &:last-child{
+        &:last-child {
             margin-right: 0;
+        }
+    }
+
+    &__profile {
+        display: flex;
+        align-items: center;
+        padding: 4px;
+        padding-right: 12px;
+        border: 1px solid silver;
+        border-radius: 50px;
+
+        &Title {
+            font-weight: 600;
+            font-size: 15px;
+            &:before {
+                @include titleVerticalAdjust("top");
+            }
+            &:after {
+                @include titleVerticalAdjust("bottom");
+            }
         }
     }
 }

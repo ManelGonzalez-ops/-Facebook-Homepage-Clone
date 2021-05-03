@@ -6,10 +6,40 @@ $shadow-inset: rgba(255, 255, 255, 0.5);
 
 $header-size: 1.0625rem;
 
-
 //palette
-$header-dark: #050505; 
+$header-dark: #050505;
 $subheader-dark: #1c1e21;
-$accent: hsl(214, 89%, 52%);
+$accent: #1876f2;
+$bg-pnp: #f0f2f5;
+$bg-positive: #deefe1;
+$secondary-text: #65676b;
+$line: #e4e6eb;
+$hover-overlay: rgba(0, 0, 0, 0.05);
+$secondary-button: rgba(0, 0, 0, 0.05);
+$non-media-pressed: rgba(68, 73, 80, 0.15);
 
-
+//animsitons
+$fds-animation-enter-exit-in: cubic-bezier(0.14, 1, 0.34, 1);
+$fds-animation-enter-exit-out: cubic-bezier(0.45, 0.1, 0.2, 1);
+$fds-animation-swap-shuffle-in: cubic-bezier(0.14, 1, 0.34, 1);
+$fds-animation-swap-shuffle-out: cubic-bezier(0.45, 0.1, 0.2, 1);
+$fds-animation-move-in: cubic-bezier(0.17, 0.17, 0, 1);
+$fds-animation-move-out: cubic-bezier(0.17, 0.17, 0, 1);
+$fds-animation-expand-collapse-in: cubic-bezier(0.17, 0.17, 0, 1);
+$fds-animation-expand-collapse-out: cubic-bezier(0.17, 0.17, 0, 1);
+$fds-animation-passive-move-in: cubic-bezier(0.5, 0, 0.1, 1);
+$fds-animation-passive-move-out: cubic-bezier(0.5, 0, 0.1, 1);
+$fds-animation-quick-move-in: cubic-bezier(0.1, 0.9, 0.2, 1);
+$fds-animation-quick-move-out: cubic-bezier(0.1, 0.9, 0.2, 1);
+$fds-animation-fade-in: cubic-bezier(0, 0, 1, 1);
+$fds-animation-fade-out: cubic-bezier(0, 0, 1, 1);
+$fds-duration-extra-extra-short-in: 100ms;
+$fds-duration-extra-extra-short-out: 100ms;
+$fds-duration-extra-short-in: 200ms;
+$fds-duration-extra-short-out: 150ms;
+$fds-duration-short-in: 280ms;
+$fds-duration-short-out: 200ms;
+$fds-duration-medium-in: 400ms;
+$fds-duration-medium-out: 350ms;
+$fds-duration-long-in: 500ms;
+$fds-duration-long-out: 350ms;

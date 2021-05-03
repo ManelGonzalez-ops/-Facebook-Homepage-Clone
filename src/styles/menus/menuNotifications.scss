@@ -1,13 +1,9 @@
-.menuNotifications{
+.menuNotifications {
     background-color: white;
     padding: 8px;
     @include menuBoxShadow();
 
-    //temporary
-    @include viewHelper();
-
-    &__header{
-
+    &__header {
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -15,16 +11,26 @@
         padding-bottom: 0;
     }
 
-    &__headerIcon{
+    &__headerIcon {
         position: relative;
         left: -3px;
         font-size: 20px;
     }
 
-    &__dot{
+    &__dot {
         height: 12px;
         width: 12px;
         border-radius: 100%;
         background-color: $accent;
+
+        &--withText {
+            height: auto;
+            width: auto;
+            border-radius: 5px;
+            background-color: $bg-positive;
+            color: #31a24c;
+            font-size: 10px;
+            font-weight: 700;
+        }
     }
 }

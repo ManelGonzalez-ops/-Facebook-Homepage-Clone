@@ -7,11 +7,13 @@ interface iconWrapperProps {
     height?: number,
     width?: number,
     ref?: any,
-    marginRight?: number
+    marginRight?: number,
+    position?: string,
+    onMouseOver?: MouseEventHandler<HTMLSpanElement>
 }
 export const IconWrapper: React.FC<iconWrapperProps> =
 
-    React.forwardRef(({ children, classname, onClick = () => null, height, width, marginRight }, ref: any) => {
+    React.forwardRef(({ children, classname, onClick = () => null, height, width, marginRight, position, onMouseOver=()=>null }, ref: any) => {
 
         const handleStyle = () => {
             const styles = {}
@@ -24,6 +26,15 @@ export const IconWrapper: React.FC<iconWrapperProps> =
             if (marginRight) {
                 Object.assign(styles, { marginRight: marginRight + "px" })
             }
+            if (position === "absolute") {
+                Object.assign(styles, {
+                    position,
+                    left: "50%",
+                    top: "50%",
+                    transform: "translate(-50%, -50%)",
+                    zIndex: -1,
+                })
+            }
             return styles
         }
 
@@ -33,6 +44,7 @@ export const IconWrapper: React.FC<iconWrapperProps> =
                 onClick={onClick}
                 style={handleStyle()}
                 ref={ref}
+                onMouseOver={onMouseOver}
             >
                 {children}
             </span>

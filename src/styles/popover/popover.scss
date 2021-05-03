@@ -1,9 +1,11 @@
-.popover {
+.popover-custom {
     position: absolute;
-    top: 0;
-    left: 0;
+    z-index: 99999;
+    //ºtop: 56px !important;
+    //left: 0;
     //height: 317px;
     width: 320px;
+    background: aquamarine;
     //overflow: hidden;
     
     //esta será opcional (variará) seguramente

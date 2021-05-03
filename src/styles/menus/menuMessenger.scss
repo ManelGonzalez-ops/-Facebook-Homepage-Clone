@@ -3,8 +3,6 @@
     background-color: white;
     @include menuBoxShadow();
 
-    //temporary
-    @include viewHelper();
     
     &__header {
         display: flex;
@@ -27,7 +25,7 @@
         padding: 8px;
         height: 52px;
         input {
-            background-color: aquamarine;
+            //background-color: aquamarine;
         }
     }
 }

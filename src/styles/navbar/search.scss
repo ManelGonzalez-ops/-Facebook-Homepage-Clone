@@ -20,13 +20,16 @@
     padding: 0.5rem;
     border-radius: 8px;
     overflow: hidden;
-    background: mediumspringgreen;
+    background: aquamarine;
     &__header {
         //ojo cuando dlex-direction es column, flex 1 hará que coja todo el spacio vertical
         //flex: 1;
         display: flex;
         align-items: center;
-        height: 40px;
+        // position: absolute;
+        // height: 40px;
+        // top: 8px;
+        // left: 20px;
     }
 
     &__subheader {
@@ -44,7 +47,7 @@
 
     &__backIcon {
         margin-right: 1rem;
-        animation: moveLeft 0.2s ease forwards;
+        animation: moveLeft 0.2s ease 0.2s forwards;
         transform: translateX(120%);
         font-size: 22px;
     }

@@ -8,6 +8,8 @@
 @import "./navbar/search.scss";
 @import "./icon/iconwrapper.scss";
 @import "./navbar/actions.scss";
+
+
 @import "./tabs/index.scss";
 @import "./popover/popover.scss";
 @import "./navbar/search.scss";
@@ -18,12 +20,20 @@
 @import "./general/text-items.scss";
 @import "./main/main.scss";
 @import "./menus/menuNotifications.scss";
-@import "./general/utils.scss";
+@import "./general/general.scss";
 @import "./menus/menuMessenger.scss";
 @import "./inputs/inputSearch.scss";
 @import "./menus/create.scss";
 @import "./menus/config.scss";
+@import "./chatList.scss";
+@import "./ActionBlock.scss";
+@import "./imageList.scss";
+@import "./post.scss";
+@import "./ListItem/RadioItem.scss";
+@import "./inputs//inputAnimated.scss";
 
-.App{
-    height: 150vh;
+html{
+    overflow-x: hidden;
 }
+
+

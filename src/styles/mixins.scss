@@ -2,7 +2,36 @@
     box-shadow: 0 12px 28px 0 $shadow-2, 0 2px 4px 0 $shadow-1, inset 0 0 0 1px $shadow-inset;
 }
 
-@mixin viewHelper(){
+@mixin viewHelper() {
     position: relative;
     left: -500px;
+}
+
+@mixin titleVerticalAdjust($side) {
+    @if ($side == "top") {
+        margin-top: -5px;
+    }
+    @if ($side == "bottom") {
+        margin-bottom: -4px;
+    }
+    display: block;
+    height: 0;
+    content: "";
+}
+
+@mixin boxShadow2() {
+    box-shadow: 0 1px 2px $shadow-2;
+}
+
+@mixin customScrollbar() {
+    &::-webkit-scrollbar {
+        width: 10px;
+    }
+    &::-webkit-scrollbar-track:hover {
+        background-color: lighten($color: #bcc0c4, $amount: 17%);
+    }
+    &::-webkit-scrollbar-thumb {
+        background: #bcc0c4;
+        border-radius: 5px;
+    }
 }

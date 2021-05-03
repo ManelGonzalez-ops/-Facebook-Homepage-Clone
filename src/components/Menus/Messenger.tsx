@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { IconWrapper } from '../icons/iconWrapper'
 import { Header } from "../text-items/Headers"
 import { FiMoreHorizontal } from "react-icons/fi"
@@ -20,6 +20,8 @@ interface messenger {
 }
 export const Messenger: React.FC<messenger> = ({ popoverRef, close }) => {
     useClosePopover({ popoverRef, action: close })
+    const [showIcon, setShowIcon] = useState(true)
+    const [inputVal, setInputVal] = useState("")
     return (
         <div
             className="menuMessenger"
@@ -52,6 +54,7 @@ export const Messenger: React.FC<messenger> = ({ popoverRef, close }) => {
                 <InputSearch
                     placeholder={"Cerca a Messenger"}
                     inputProps={{ paddingLeft: "35px" }}
+                    {...{ showIcon, setShowIcon, inputVal, setInputVal }}
                 />
             </div>
             <div
@@ -92,7 +95,6 @@ export const Messenger: React.FC<messenger> = ({ popoverRef, close }) => {
                             <img
                                 className="listItem--big__image"
                                 src="https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_1280.png"
-                                style={{ width: "calc(72px - 16px)" }}
                             />
                         }
                         endIcon={<DotAccent

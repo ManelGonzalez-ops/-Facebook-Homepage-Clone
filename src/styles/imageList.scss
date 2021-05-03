@@ -1,0 +1,150 @@
+.imageList {
+    width: 590px;
+    max-width: 100%;
+    @media (min-height: 790px) {
+        width: 680px;
+        min-width: 500px;
+    }
+
+    &__list {
+        width: 876px;
+        max-width: 100%;
+        display: flex;
+        padding: 8px 0px 24px;
+        //temporal
+        //height: 230px;
+
+        &Item {
+            flex: 1;
+            padding-right: 4px;
+            padding-left: 4px;
+            &:first-child {
+                padding-left: 0;
+            }
+            &:last-child {
+                padding-right: 0;
+            }
+            border-radius: 10px;
+        }
+        &ItemContent {
+            flex: 1;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            border-radius: 10px;
+        }
+    }
+    &__aspectRatio {
+        //aspectReatio box height 1.77 times its with
+        padding-top: 177.778%;
+        position: relative;
+        @include boxShadow2();
+        border-radius: 10px;
+        .wrapper {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+        }
+    }
+
+    .content {
+        height: 100%;
+        width: 100%;
+        background-color: mediumpurple;
+    }
+
+    &__image {
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+
+        &:first-child {
+            //amazing hack for images
+            overflow-y: hidden;
+        }
+
+        &--allRounded {
+            @extend .imageList__image;
+            border-radius: 10px;
+        }
+    }
+    &__create {
+        display: flex;
+        justify-content: center;
+        position: relative;
+        padding: 28px 16px 12px;
+        background-color: white;
+        border-bottom-left-radius: 10px;
+        border-bottom-right-radius: 10px;
+    }
+
+    &__createText {
+        text-align: center;
+        line-height: 1.3333;
+        font-size: 15px;
+        font-weight: 600;
+        &:before {
+            @include titleVerticalAdjust("top");
+        }
+        &:after {
+            @include titleVerticalAdjust("bottom");
+        }
+    }
+
+    &__actionBtn {
+        position: absolute;
+        top: -20px;
+        width: 40px;
+        height: 40px;
+        padding: 4px;
+        border-radius: 100%;
+        background-color: lightcoral;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: white;
+
+        &__bg {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: $accent;
+            border-radius: 100%;
+
+            svg,
+            svg * {
+                fill: white;
+                color: white;
+                font-size: 25px;
+            }
+        }
+    }
+
+    &__textBottom {
+        position: absolute;
+        padding: 12px;
+        bottom: 0;
+        color: white;
+        line-height: 1.33;
+        font-weight: 600;
+    }
+    &__bubbleTop {
+        position: absolute;
+        left: 0;
+        top: 0;
+        padding: 12px;
+
+        &Image {
+            border-radius: 100%;
+            border: 3px solid $accent;
+            height: 40px;
+            width: 40px;
+        }
+    }
+}

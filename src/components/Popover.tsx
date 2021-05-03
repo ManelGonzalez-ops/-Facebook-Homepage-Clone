@@ -39,11 +39,11 @@ export const Popover: React.FC<PopoverProps> = ({ children, stylesState, anchor,
 
     }, [])
 
-    return (ReactDOM.createPortal(<div ref={popover} className="popover"
+    return (ReactDOM.createPortal(<div ref={popover} className="popover-custom"
         style={{
             ...defaultStyles,
             ...transitionStyles[stylesState],
-            ...anchorPlacement,
+            //...anchorPlacement,
             ...getCustomStyles()
         }}
     >

@@ -1,0 +1,65 @@
+.chatList {
+    position: sticky;
+    height: calc(100vh - 56px);
+    top: 56px;
+    overflow: scroll;
+    padding: 8px;
+    padding-top: 10px;
+    //height: 100vh;
+    //#bcc0c4
+     border-radius: 5px;
+     @include customScrollbar();
+
+    /* Track */
+
+    &__header {
+        padding-bottom: 4px;
+        display: flex;
+        align-items: flex-start;
+        font-weight: normal;
+        padding-top: 20px;
+
+        h3 {
+            flex: 1.5;
+            font-size: 17px;
+            color: $secondary-text;
+            padding-left: 8px;
+            font-weight: 600;
+
+            &:before {
+                display: block;
+                height: 0;
+                content: "";
+                @include titleVerticalAdjust("top");
+            }
+            &:after {
+                display: block;
+                height: 0;
+                content: "";
+                @include titleVerticalAdjust("bottom");
+            }
+        }
+    }
+
+    &__separator {
+        height: 1px;
+        background-color: silver;
+        margin-top: 18px;
+        width: calc(100% - 16px);
+        margin-left: auto;
+        margin-right: auto;
+    }
+    &__actions {
+        flex: 1;
+        display: flex;
+        justify-content: space-around;
+        top: -2px;
+        position: relative;
+        padding: 0 4px;
+        padding-right: 0;
+    }
+
+    &__body {
+        padding: 2px 0;
+    }
+}

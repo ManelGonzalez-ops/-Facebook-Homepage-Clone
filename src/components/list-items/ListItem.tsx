@@ -6,7 +6,9 @@ type config = "icon" | "image"
 
 interface customStyles {
     height?: string,
-    width?: string
+    width?: string,
+    padding?: string,
+    alignItems?: string
 }
 interface listItemImage {
     renderText: () => any,
@@ -15,6 +17,7 @@ interface listItemImage {
     type?: config,
     icon?: ReactNode
     customStyles?: customStyles,
+    classname?: string
 }
 
 export const ListItem: React.FC<listItemImage> = ({
@@ -24,7 +27,7 @@ export const ListItem: React.FC<listItemImage> = ({
     type = "image",
     icon,
     customStyles = {},
-
+    classname = null
 }) => {
     const getCustomStyles = () => {
         const styles = {}
@@ -34,21 +37,27 @@ export const ListItem: React.FC<listItemImage> = ({
         if (customStyles.width) {
             Object.assign(styles, { width: customStyles.width })
         }
+        if (customStyles.padding) {
+            Object.assign(styles, { padding: customStyles.padding })
+        }
+        if (customStyles.alignItems) {
+            Object.assign(styles, { alignItems: customStyles.alignItems })
+        }
         return styles
     }
 
     return (
         <div
-            className="listItem"
+            className={classname ? classname : "listItem"}
             style={{ ...getCustomStyles() }}
         >
             {type === "icon" && <div className="listItem__icon">{icon}</div>}
             {type === "image" && image}
-            <p
+            <div
                 className="listItem__text"
             >
                 {renderText()}
-            </p>
+            </div>
             {endIcon && endIcon}
 
         </div>

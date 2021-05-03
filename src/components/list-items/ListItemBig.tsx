@@ -5,7 +5,9 @@ import { IoMdClose } from "react-icons/io"
 type config = "image" | "icon"
 interface customStyles {
     height?: string,
-    width?: string
+    width?: string,
+    padding?: string | number,
+    border?: string
 }
 interface listItemImage {
     renderText: () => any,
@@ -23,7 +25,7 @@ export const ListItemBig: React.FC<listItemImage> = ({ image,
     type = "image",
     icon,
     customStyles = {},
-    dateInfo = null
+    dateInfo = null,
 }) => {
 
     const getCustomStyles = () => {
@@ -33,6 +35,12 @@ export const ListItemBig: React.FC<listItemImage> = ({ image,
         }
         if (customStyles.width) {
             Object.assign(styles, { width: customStyles.width })
+        }
+        if (customStyles.padding) {
+            Object.assign(styles, { padding: customStyles.padding })
+        }
+        if (customStyles.border) {
+            Object.assign(styles, { border: customStyles.border })
         }
         return styles
     }

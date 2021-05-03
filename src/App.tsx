@@ -5,8 +5,10 @@ import './App.css';
 import { Navbar } from './views/Navbar';
 import { Popover } from './components/Popover';
 import { Main } from './views/Main';
+import { useDummyData } from './components/Main/Index';
 
 function App() {
+  useDummyData()
   return (
     <div className="App">
       <header className="App-header">
