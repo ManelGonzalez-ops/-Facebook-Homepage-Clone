@@ -24,12 +24,13 @@ export const TextMultilineBig: React.FC<textMultiline> = ({ title, subtitle }) =
 
 interface modification {
     justifyContent?: string
+    paddingRight?: string
 }
 interface textNotification {
     text: string
     footer: string | ReactNode
     modification?: modification
-    dateInfo?: ReactNode
+    dateInfo?: ReactNode,
 }
 export const TextNotification: React.FC<textNotification> = ({ text, footer, modification = {}, dateInfo = null }) => {
     const getCustomStyles = () => {
@@ -38,13 +39,18 @@ export const TextNotification: React.FC<textNotification> = ({ text, footer, mod
             const { justifyContent } = modification
             Object.assign(styles, { justifyContent })
         }
+        if (modification.paddingRight) {
+            const { paddingRight } = modification
+            Object.assign(styles, { paddingRight })
+        }
         return styles
     }
     return (
         <div className="textItem-Multiline"
             style={{ ...getCustomStyles() }}
         >
-            <p className="textItem-Multiline__text">{text}</p>
+            <p className="textItem-Multiline__text"
+            >{text}</p>
             {dateInfo ?
                 <div className="textItem-Multiline__footerWrapper">
                     <h4 className="textItem-Multiline__text--sm--accent">{footer}</h4>

@@ -1,0 +1,85 @@
+.bubbleList {
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    position: relative;
+    padding: 12px 16px;
+    background-color: white;
+    margin-top: 1rem;
+    .scrollable {
+        display: flex;
+        align-items: center;
+        transition: transform 0.5s ease;
+    }
+    &__list {
+        display: flex;
+    }
+
+    &__button {
+        padding: 0px 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: none;
+        height: 38px;
+        border-radius: 20px;
+        margin-right: 16px;
+        border: 2px solid #E7F3FF;
+        background-color: white;
+        & > span {
+            margin-right: 8px;
+        }
+        & > p {
+            white-space: nowrap;
+            font-weight: 600;
+        }
+
+        .icon {
+            background-image: url("../../media/facebook-icons2.png");
+            background-position: 0 -219px;
+            background-size: auto;
+            width: 24px;
+            height: 24px;
+            background-repeat: no-repeat;
+            display: inline-block;
+        }
+    }
+}
+
+.scroller-button {
+    position: absolute;
+    z-index: 1;
+    height: 48px;
+    width: 48px;
+    top: 50%;
+    transform: translateY(-50%) scale(1);
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 25px;
+    background-color: white;
+    color: #65676b;
+    box-shadow: 0 2px 8px $shadow-1, 0 0 0 1px $shadow-1;
+    transition: all 0.1s ease;
+    &:hover{
+        background-color: #F2F3F5;
+    }
+
+    &.pressed {
+        transform: translateY(-50%) scale(0.95);
+        background-color: #EBEDF0;
+    }
+
+    &--forward {
+        @extend .scroller-button;
+        right: 15px;
+    }
+
+    &--back {
+        @extend .scroller-button;
+        left: 15px;
+    }
+}

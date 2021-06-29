@@ -6,13 +6,10 @@ import { ImageList } from '../components/imageList'
 import { PostsList } from "../components/Post/PostsList"
 import { useDummyData } from '../components/Main/Index'
 import { useFakeData } from '../Context'
+import { BubbleList } from '../components/BubbleList'
 export const Main = () => {
-    const { data: { posts, imagesMain, loading } } = useFakeData()
     const [showScroll1, setShowScroll1] = useState(false)
     const [showScroll2, setShowScroll2] = useState(false)
-    if (loading) {
-        return <p>loading...</p>
-    }
     return (
         <div
             className="grid-main"
@@ -29,10 +26,11 @@ export const Main = () => {
                 className="contentMain"
             >
                 <div className="contentMain__wrapperOuter">
-                    <ImageList posts={imagesMain} />
+                    <ImageList />
                     <div className="contentMain__wrapper">
                         <ActionBlock />
-                        <PostsList posts={posts} />
+                        <BubbleList />
+                        <PostsList />
                     </div>
                 </div>
             </div>

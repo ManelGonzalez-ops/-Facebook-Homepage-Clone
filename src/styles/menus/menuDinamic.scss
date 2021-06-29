@@ -1,9 +1,9 @@
 .menuDyn {
-    background: antiquewhite;
+    background: $bg-menu;
     transition: height 0.3s ease 0s;
     overflow: hidden;
     position: relative;
-    border-radius: 8px;
+    border-radius: $card-border-radius;
 }
 .principal-enter {
     transform: translateX(-100%);

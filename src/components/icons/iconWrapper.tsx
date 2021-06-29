@@ -9,11 +9,13 @@ interface iconWrapperProps {
     ref?: any,
     marginRight?: number,
     position?: string,
-    onMouseOver?: MouseEventHandler<HTMLSpanElement>
+    onMouseOver?: MouseEventHandler<HTMLSpanElement>,
+    transparent?: boolean
+    hoverable?: boolean
 }
 export const IconWrapper: React.FC<iconWrapperProps> =
 
-    React.forwardRef(({ children, classname, onClick = () => null, height, width, marginRight, position, onMouseOver=()=>null }, ref: any) => {
+    React.forwardRef(({ children, classname, onClick = () => null, height, width, marginRight, position, onMouseOver = () => null, transparent = false, hoverable = false }, ref: any) => {
 
         const handleStyle = () => {
             const styles = {}
@@ -40,7 +42,11 @@ export const IconWrapper: React.FC<iconWrapperProps> =
 
         return (
             <span
-                className={`icon__wrapper ${classname}`}
+                className={
+                    `icon__wrapper 
+                ${hoverable ? "hoverable" : false}
+                ${transparent ? "icon__wrapper--transparent" : false}
+                ${classname}`}
                 onClick={onClick}
                 style={handleStyle()}
                 ref={ref}

@@ -17,15 +17,19 @@ interface listItemImage {
     icon?: ReactNode,
     customStyles?: customStyles,
     dateInfo?: ReactNode
+    isHoverable?: boolean,
+    textStyles?: any
 }
 
 export const ListItemBig: React.FC<listItemImage> = ({ image,
     renderText,
+    textStyles = {},
     endIcon = null,
     type = "image",
     icon,
     customStyles = {},
     dateInfo = null,
+    isHoverable = true,
 }) => {
 
     const getCustomStyles = () => {
@@ -46,7 +50,10 @@ export const ListItemBig: React.FC<listItemImage> = ({ image,
     }
     return (
         <div
-            className="listItem--big"
+            className={`listItem--big
+            ${isHoverable ? "hoverable-tab" : ""} 
+            `
+            }
             style={{ ...getCustomStyles() }}
         >
             {type === "icon"
@@ -57,10 +64,11 @@ export const ListItemBig: React.FC<listItemImage> = ({ image,
 
             <p
                 className="listItem__text"
+                style={{...textStyles}}
             >
                 {renderText()}
             </p>
-            
+
             {dateInfo && dateInfo}
 
             {endIcon && endIcon}

@@ -6,7 +6,6 @@ interface closePopopver {
 }
 export const useClosePopover: React.FC<closePopopver> = ({ popoverRef, action }) => {
     const closeSearchPopover = (e: Event) => {
-        console.log(e, "levento")
         if (!popoverRef.current) {
             return
         }

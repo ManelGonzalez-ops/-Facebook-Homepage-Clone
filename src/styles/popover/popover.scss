@@ -5,8 +5,10 @@
     //left: 0;
     //height: 317px;
     width: 320px;
-    background: aquamarine;
-    //overflow: hidden;
+    @include menuBoxShadow();
+    border-radius: $card-border-radius;
+    background-color: white;
+    overflow-wrap: anywhere;
     
     //esta será opcional (variará) seguramente
     

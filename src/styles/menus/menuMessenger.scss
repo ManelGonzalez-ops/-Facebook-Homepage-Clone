@@ -1,7 +1,11 @@
 .menuMessenger {
     padding: 8px;
-    background-color: white;
-    @include menuBoxShadow();
+    padding-right: 0;
+    background-color: $bg-menu;
+    border-radius: $card-border-radius;
+    max-height: 585px;
+    overflow: scroll;
+    @include customScrollbar();
 
     
     &__header {

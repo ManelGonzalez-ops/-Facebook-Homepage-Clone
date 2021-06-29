@@ -1,0 +1,34 @@
+.inputAnimated {
+  flex: 0.8;
+  height: 100%;
+  border: none;
+  border-top-left-radius: 50px;
+  border-top-right-radius: 50px;
+  border-bottom-left-radius: 50px;
+  border-bottom-right-radius: 50px;
+  padding: 5px;
+  padding-left: 1rem;
+  background: none;
+}
+
+.inputAnimated:focus {
+  border: none;
+  outline: none;
+}
+
+.goBack--wrapper {
+  display: flex;
+  height: 100%;
+  align-items: center;
+  animation: shrink 0.2s ease 0.2s forwards;
+  flex: 0.2;
+}
+
+@keyframes shrink {
+  from {
+    flex: 0.2;
+  }
+  to {
+    flex: 0;
+  }
+}

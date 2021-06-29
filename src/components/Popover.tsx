@@ -6,38 +6,49 @@ interface PopoverProps {
     children: (x: any) => ReactNode,
     stylesState: TransitionStatus,
     anchor: any,
-    width?: string
+    width?: string,
+    padding?: string,
+    top?: string,
+    right?: string
 }
-export const Popover: React.FC<PopoverProps> = ({ children, stylesState, anchor, width = null }) => {
-    console.log(stylesState)
+export const Popover: React.FC<PopoverProps> = ({ children, stylesState, anchor, width = null, padding, top, right }) => {
     const popover = useRef(null)
 
     //define popover placement
 
-    const [{ top, left }, setAnchor] = useState({ top: 0, left: 0 })
-    const anchorPlacement = {
-        top: top + "px",
-        left: left + -50 + "px"
-    }
+    // const [{ top, left }, setAnchor] = useState({ top: 0, left: 0 })
+    // const anchorPlacement = {
+    //     top: top + "px",
+    //     left: left + -50 + "px"
+    // }
 
     const getCustomStyles = () => {
         const styles = {}
         if (width) {
             Object.assign(styles, { width })
         }
+        if (padding) {
+            Object.assign(styles, { padding })
+        }
+        if (right) {
+            Object.assign(styles, { right })
+        }
+        if (top) {
+            Object.assign(styles, { top })
+        }
         return styles
     }
 
-    useEffect(() => {
+    // useEffect(() => {
 
-        if (anchor.current) {
-            setAnchor({
-                top: anchor.current.getBoundingClientRect().top,
-                left: anchor.current.getBoundingClientRect().left
-            })
-        }
+    //     if (anchor.current) {
+    //         setAnchor({
+    //             top: anchor.current.getBoundingClientRect().top,
+    //             left: anchor.current.getBoundingClientRect().left
+    //         })
+    //     }
 
-    }, [])
+    // }, [])
 
     return (ReactDOM.createPortal(<div ref={popover} className="popover-custom"
         style={{
@@ -59,9 +70,12 @@ interface FadeProps {
     children: any
     open: boolean
     anchor: any
-    width?: string
+    width?: string,
+    padding?: string,
+    top?: string,
+    right?: string
 }
-export const Fade: React.FC<FadeProps> = ({ children, open, anchor, width }) => (
+export const Fade: React.FC<FadeProps> = ({ children, open, anchor, width, padding, top, right }) => (
     <Transition
         in={open}
         timeout={50}
@@ -77,7 +91,7 @@ export const Fade: React.FC<FadeProps> = ({ children, open, anchor, width }) => 
             <Popover
                 stylesState={animState}
                 anchor={anchor}
-                width={width}
+                {...{width, padding, top, right}}
             >
                 {(popoverRef: any) =>
                     children(popoverRef)

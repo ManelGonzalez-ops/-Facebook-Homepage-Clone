@@ -1,5 +1,4 @@
 import React from 'react'
-import { FacebookIcon } from '../components/icons/FacebookIcon'
 import { GiHamburgerMenu } from "react-icons/gi"
 import { IconWrapper } from '../components/icons/iconWrapper'
 import { Actions } from '../components/navbar/Actions'

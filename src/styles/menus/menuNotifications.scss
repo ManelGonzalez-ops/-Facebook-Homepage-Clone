@@ -1,8 +1,11 @@
 .menuNotifications {
-    background-color: white;
+    background-color: $bg-menu;
     padding: 8px;
-    @include menuBoxShadow();
-
+    border-radius: $card-border-radius;
+    //@include menuBoxShadow();
+    overflow: scroll;
+    @include customScrollbar();
+    max-height: 585px;  
     &__header {
         display: flex;
         justify-content: space-between;
@@ -22,6 +25,10 @@
         width: 12px;
         border-radius: 100%;
         background-color: $accent;
+        position: absolute;
+        top: 50%;
+        right: 7px;
+        transform: translateY(-50%);
 
         &--withText {
             height: auto;

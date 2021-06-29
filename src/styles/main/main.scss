@@ -6,7 +6,6 @@
     background-color: $bg-pnp;
 
     .contentMain {
-        background-color: lightcyan;
         flex-grow: 1;
         flex-shrink: 1;
         flex-basis: 744px;
@@ -71,11 +70,10 @@
 
     .aside-links {
         position: sticky;
-        overflow: scroll;
+        overflow-y: auto;
         top: 56px;
         height: calc(100vh - 56px);
         @include customScrollbar();
-        will-change: scroll-position;
     }
     .scrollbar-mask {
         position: absolute;

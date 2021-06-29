@@ -8,7 +8,9 @@ import { BiVideoRecording } from "react-icons/bi"
 import { IconWrapper } from '../icons/iconWrapper'
 import { TextNotification } from '../text-items/TextMultiline'
 import { useClosePopover } from '../Utils/useClosePopover'
-import {DotAccent} from "../Feedback/DotAccent"
+import { DotAccent } from "../Feedback/DotAccent"
+import userEvent from '@testing-library/user-event'
+import { useFakeData } from '../../Context'
 interface menuNotifications {
     popoverRef?: any,
     close: () => void,
@@ -17,6 +19,10 @@ interface menuNotifications {
 }
 export const Notifications: React.FC<menuNotifications> = ({ close, popoverRef, viewId, setViewId }) => {
     useClosePopover({ popoverRef, action: close })
+    const { data: { notifications, loading } } = useFakeData()
+    if (loading) {
+        return <div>loading</div>
+    }
     return (
         <div
             className="menuNotifications"
@@ -31,7 +37,9 @@ export const Notifications: React.FC<menuNotifications> = ({ close, popoverRef, 
             </div>
             <SubHeader text="Noves" />
             <ListItemBig
+                isHoverable
                 renderText={() => "Has engegat una sessió com a TalentForJobs el 19 d’abr. 2021, 12:09. No eres pas tu? Pots eliminar el programa."}
+                textStyles={{paddingRight: "12px"}}
                 type="image"
                 image={
                     <ImageWithBadge
@@ -40,8 +48,8 @@ export const Notifications: React.FC<menuNotifications> = ({ close, popoverRef, 
                             src="https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_1280.png" />}
                         badgeIcon={
                             <IconWrapper
-                                height={28}
-                                width={28}
+                                height={32}
+                                width={32}
                             >
                                 <BiVideoRecording />
                             </IconWrapper>}
@@ -50,20 +58,22 @@ export const Notifications: React.FC<menuNotifications> = ({ close, popoverRef, 
                 endIcon={<DotAccent />}
             />
             <SubHeader text="Anteriors" />
-            {[...Array(5)].map((_, index) =>
+            {notifications.length && notifications.map((user, index) =>
 
                 <ListItemBig
+                    isHoverable
                     key={index}
                     renderText={() => <TextNotification
-                        text="Has engegat una sessió com a TalentForJobs el 19 d’abr. 2021, 12:09. "
+                        text={user.text.length > 72 ? user.text.slice(0, 72) : user.text}
                         footer="Fa 3 hores"
+                        modification={{paddingRight: "12px"}}
                     />}
                     type="image"
                     image={
                         <ImageWithBadge
                             image={<img
                                 className="listItem--big__image"
-                                src="https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_1280.png" />}
+                                src={user.userImage} />}
                             badgeIcon={
                                 <IconWrapper
                                     height={28}

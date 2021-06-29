@@ -4,9 +4,10 @@
     display: flex;
     height: 52px;
     padding: 0.5rem;
-    border: 1px solid silver;
+    //border: 1px solid silver;
     border-radius: 8px;
     align-items: stretch;
+    position: relative;
 
     &__image {
         width: 36px;
@@ -61,6 +62,10 @@
             width: calc(72px - 16px);
         }
        
+        &__dateInfo{
+            color: $secondary-text;
+            font-size: 13px;
+        }
     }
 
     &--sm {

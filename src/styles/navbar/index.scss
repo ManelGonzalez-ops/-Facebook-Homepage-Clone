@@ -62,15 +62,13 @@
         }
     }
     &__tabs {
-        //flex: 1;
         display: none;
-        //height: 100%;
         padding: 4px 0;
         position: fixed;
         left: 0;
         right: 0;
         height: 56px;
-        background-color: aquamarine;
+        background: white;
         @media (min-width: 700px) {
             display: flex;
             flex: 1;

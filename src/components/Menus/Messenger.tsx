@@ -11,6 +11,7 @@ import { ListItemBig } from '../list-items/ListItemBig'
 import { TextMultiline, TextNotification } from '../text-items/TextMultiline'
 import { DotAccent } from "../Feedback/DotAccent"
 import { IoMdChatboxes } from "react-icons/io"
+import { useFakeData } from '../../Context'
 
 const icons = [FiMoreHorizontal, HiArrowsExpand, MdVideoCall, BiEdit]
 
@@ -22,6 +23,11 @@ export const Messenger: React.FC<messenger> = ({ popoverRef, close }) => {
     useClosePopover({ popoverRef, action: close })
     const [showIcon, setShowIcon] = useState(true)
     const [inputVal, setInputVal] = useState("")
+
+    const { data: { messenger, loading } } = useFakeData()
+    if (loading) {
+        return <div>loading</div>
+    }
     return (
         <div
             className="menuMessenger"
@@ -39,10 +45,12 @@ export const Messenger: React.FC<messenger> = ({ popoverRef, close }) => {
                 >
                     {icons.map(Icon =>
                         <IconWrapper
-                            height={28}
-                            width={28}
+                            height={30}
+                            width={30}
+                            transparent
+                            hoverable
                         >
-                            {<Icon style={{ height: "18px", width: "18px" }} />}
+                            {<Icon style={{ fontSize: "21px" }} />}
                         </IconWrapper>
                     )}
                 </div>
@@ -61,6 +69,7 @@ export const Messenger: React.FC<messenger> = ({ popoverRef, close }) => {
                 className="menuMessenger__body"
             >
                 <ListItemBig
+                    isHoverable
                     renderText={() => <TextMultiline
                         title="New Message Requests"
                         subtitle={
@@ -76,15 +85,16 @@ export const Messenger: React.FC<messenger> = ({ popoverRef, close }) => {
                     >
                         <IoMdChatboxes />
                     </IconWrapper>}
+
                 />
-                {[...Array(5)].map((_, index) =>
+                {messenger.length && messenger.map((user, index) =>
 
                     <ListItemBig
                         key={index}
                         renderText={() => <TextNotification
-                            modification={{ justifyContent: "center" }}
-                            text="Marisa Cayetano"
-                            footer="Marisa Cayetano y tu celebreu"
+                            modification={{ justifyContent: "center", paddingRight: "23px" }}
+                            text={user.full_name}
+                            footer={`${user.full_name} y tu celebreu`}
                             dateInfo={<span
                                 className="listItem--big__dateInfo">
                                 ·&nbsp;24 setm.
@@ -94,7 +104,7 @@ export const Messenger: React.FC<messenger> = ({ popoverRef, close }) => {
                         image={
                             <img
                                 className="listItem--big__image"
-                                src="https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_1280.png"
+                                src={user.userImage}
                             />
                         }
                         endIcon={<DotAccent

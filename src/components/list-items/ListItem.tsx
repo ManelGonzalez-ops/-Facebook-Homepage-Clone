@@ -17,7 +17,8 @@ interface listItemImage {
     type?: config,
     icon?: ReactNode
     customStyles?: customStyles,
-    classname?: string
+    classname?: string,
+    isHoverable?: boolean
 }
 
 export const ListItem: React.FC<listItemImage> = ({
@@ -27,7 +28,8 @@ export const ListItem: React.FC<listItemImage> = ({
     type = "image",
     icon,
     customStyles = {},
-    classname = null
+    classname = null,
+    isHoverable = true
 }) => {
     const getCustomStyles = () => {
         const styles = {}
@@ -48,7 +50,12 @@ export const ListItem: React.FC<listItemImage> = ({
 
     return (
         <div
-            className={classname ? classname : "listItem"}
+            className=
+            {
+                `listItem 
+            ${isHoverable ? "hoverable-tab" : ""} 
+            ${classname}`
+        }
             style={{ ...getCustomStyles() }}
         >
             {type === "icon" && <div className="listItem__icon">{icon}</div>}

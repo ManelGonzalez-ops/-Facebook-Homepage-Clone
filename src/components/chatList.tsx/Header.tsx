@@ -2,6 +2,14 @@ import React from 'react'
 import { MdVideoCall } from "react-icons/md"
 import { IconWrapper } from '../icons/iconWrapper'
 import { Separator } from '../Utils/Separator'
+import { CgSearch } from "react-icons/cg";
+import { FiMoreHorizontal } from "react-icons/fi"
+
+const iconList = [
+    MdVideoCall,
+    CgSearch,
+    FiMoreHorizontal
+]
 export const Header = () => {
     return (
         <>
@@ -21,14 +29,15 @@ export const Header = () => {
                 <div
                     className="chatList__actions"
                 >
-                    {[...Array(3)].map(_ => (
+                    {iconList.map(Icon => (
                         <div style={{ position: "relative" }}>
-                            <MdVideoCall />
                             <IconWrapper
-                                height={28}
-                                width={28}
-                                position="absolute"
+                                height={32}
+                                width={32}
+                                transparent={true}
+                                hoverable
                             >
+                                <Icon />
                             </IconWrapper>
                         </div>
                     ))}

@@ -1,6 +1,7 @@
 .menuCreate {
-    background-color: azure;
+    background-color: $bg-menu;
     padding: 8px;
+    border-radius: $card-border-radius;
     
     & *{
         line-height: normal;

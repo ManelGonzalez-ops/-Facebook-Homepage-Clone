@@ -11,6 +11,7 @@ import { Transition } from "react-transition-group"
 import { InputSearch } from '../../inputs/InputSearch'
 import { MdKeyboardBackspace } from 'react-icons/md'
 import { useViewport } from '../../Utils/useViewport'
+import { FacebookIcon } from '../../icons/FacebookIcon';
 
 export const Search = () => {
     const [open, setOpen] = useState(false)
@@ -40,7 +41,7 @@ export const Search = () => {
         <div className="search">
             <IconWrapper
             >
-                <FaFacebook />
+                <FacebookIcon />
             </IconWrapper>
             <div className="inputSearch__wrapper"
                 onMouseDown={() => { setShowInput(true) }}
@@ -59,7 +60,7 @@ export const Search = () => {
                 </div>
             </div>
             <TabBase classname="tab__base--mobile hoverable-tab">
-                <GiHamburgerMenu />
+                <Hamburger />
             </TabBase>
             {(showInput || !isSmallDevice) && <div
                 className="inputSearch__wrapper--abs"
@@ -86,3 +87,4 @@ export const Search = () => {
     )
 }
 
+const Hamburger = ({ className }: {className?: string}) => <svg viewBox="0 0 28 28" className={className} height="28" width="28"><path d="M23.5 4a1.5 1.5 0 110 3h-19a1.5 1.5 0 110-3h19zm0 18a1.5 1.5 0 110 3h-19a1.5 1.5 0 110-3h19zm0-9a1.5 1.5 0 110 3h-19a1.5 1.5 0 110-3h19z"></path></svg>

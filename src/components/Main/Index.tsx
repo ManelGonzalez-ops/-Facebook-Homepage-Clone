@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import { useFakeData } from '../../Context'
 import fakeposts from "../../Mock_posts.json"
 
-const url_users = "https://randomuser.me/api/?inc=picture&results=200"
+export const url_users = "https://randomuser.me/api/?inc=picture&results=200"
 const posts_url = "https://api.mockaroo.com/api/bab131a0?count=150&key=9b8b3fa0"
 const urls_images = "https://source.unsplash.com/random"
 
@@ -17,7 +17,6 @@ export interface readyPosts {
 }
 export const useDummyData = () => {
     const {dispatch} = useFakeData()
-    console.log(dispatch, "q coll")
     const [readyData, setReadyData] = useState<readyPosts[] | null>(null)
     const [loading, setLoading] = useState<boolean>(true)
     const [fetchingReady, setFetchingReady] = useState(false)

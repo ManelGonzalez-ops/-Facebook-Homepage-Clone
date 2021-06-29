@@ -44,24 +44,27 @@ export const Actions = () => {
                         >Manel</p>
                     </div>
                 </div>}
-            <IconWrapper classname="actions__item hoverable"
+            <IconWrapper classname="actions__item"
                 onClick={() => { setOpen("create") }}
-
+                hoverable
             >
                 <BiPlus />
             </IconWrapper>
-            <IconWrapper classname="actions__item hoverable"
+            <IconWrapper classname="actions__item"
                 onClick={() => { setOpen("messenger") }}
+                hoverable
             >
                 <RiMessengerFill />
             </IconWrapper>
-            <IconWrapper classname="actions__item hoverable"
+            <IconWrapper classname="actions__item"
                 onClick={() => { setOpen("notifications") }}
+                hoverable
             >
                 <BsBellFill />
             </IconWrapper>
-            <IconWrapper classname="actions__item hoverable"
+            <IconWrapper classname="actions__item"
                 onClick={() => { setOpen("settings") }}
+                hoverable
             >
                 <VscTriangleDown />
             </IconWrapper>
@@ -73,6 +76,9 @@ export const Actions = () => {
                 open={open === "create"}
                 anchor={anchor}
                 width="360px"
+                padding="0 5px 0 0"
+                right="15px"
+                top="53px"
             >
                 {(popoverRef: any) =>
                     <Create {...{ close, popoverRef }} />}
@@ -81,6 +87,9 @@ export const Actions = () => {
                 open={open === "messenger"}
                 anchor={anchor}
                 width="360px"
+                padding="0 5px 0 0"
+                right="15px"
+                top="53px"
             >
                 {(popoverRef: any) =>
                     <Messenger {...{ close, popoverRef }} />}
@@ -89,6 +98,9 @@ export const Actions = () => {
                 open={open === "notifications"}
                 anchor={anchor}
                 width="360px"
+                padding="0 5px 0 0"
+                right="15px"
+                top="53px"
             >
                 {(popoverRef: any) =>
                     <Notifications {...{ close, popoverRef, viewId, setViewId }} />}
@@ -97,6 +109,9 @@ export const Actions = () => {
                 open={open === "settings"}
                 anchor={anchor}
                 width="360px"
+                padding="0 5px 0 0"
+                right="15px"
+                top="53px"
             >
                 {(popoverRef: any) =>
                     <MenuDinamic {...{ close, popoverRef, viewId, setViewId }} />}

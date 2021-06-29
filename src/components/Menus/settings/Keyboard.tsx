@@ -53,7 +53,6 @@ export const Keyboard: React.FC<menuView> = ({ title, handleGoBack }) => {
                     text="Desactivat"
                     checked={!shortcuts}
                     onChange={() => {
-                        console.log("hola")
                         setShortcuts(false)
                     }}
                 />
@@ -61,7 +60,6 @@ export const Keyboard: React.FC<menuView> = ({ title, handleGoBack }) => {
                     text="Activat"
                     checked={shortcuts}
                     onChange={() => {
-                        console.log("adios")
                         setShortcuts(true)
                     }}
                 />

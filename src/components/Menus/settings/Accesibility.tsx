@@ -49,7 +49,6 @@ export const Accesibility: React.FC<MenuViewWithNesting> = ({ title, handleGoBac
                     text="Desactivat"
                     checked={!lightMode}
                     onChange={() => {
-                        console.log("hola")
                         setLightMode(false)
                     }}
                 />
@@ -57,7 +56,6 @@ export const Accesibility: React.FC<MenuViewWithNesting> = ({ title, handleGoBac
                     text="Activat"
                     checked={lightMode}
                     onChange={() => {
-                        console.log("adios")
                         setLightMode(true)
                     }}
                 />
@@ -85,7 +83,6 @@ export const Accesibility: React.FC<MenuViewWithNesting> = ({ title, handleGoBac
                     text="Desactivat"
                     checked={!compactMode}
                     onChange={() => {
-                        console.log("hola")
                         setCompactMode(false)
                     }}
                 />
@@ -93,7 +90,6 @@ export const Accesibility: React.FC<MenuViewWithNesting> = ({ title, handleGoBac
                     text="Activat"
                     checked={compactMode}
                     onChange={() => {
-                        console.log("adios")
                         setCompactMode(true)
                     }}
                 />

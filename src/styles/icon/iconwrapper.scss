@@ -5,12 +5,15 @@
     justify-content: center;
     align-items: center;
     border-radius: 100%;
-    background-color: grey;
+    background-color: $hover-overlay;
     font-size: 20px;
+    cursor: pointer;
 
+    &--transparent {
+        background: transparent;
+    }
     .icon__wraper--right-margin {
     }
-
 }
 
 .icon__wrapperInner {
@@ -22,3 +25,16 @@
     position: relative;
 }
 
+.ms05siws {
+    transition-duration: var(--fds-fast);
+}
+.hwsy1cff {
+    transition-property: fill, stroke;
+}
+
+.b7h9ocf4 {
+    transition-timing-function: var(--fds-soft);
+}
+.a8c37x1j {
+    display: block;
+}

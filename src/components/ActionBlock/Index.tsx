@@ -2,10 +2,10 @@ import React from 'react'
 import { InputBase } from '../inputs/InputBase'
 import { useViewport } from '../Utils/useViewport'
 import { ActionButton } from './ActionButton'
+import iconCollection from "../../media/facebook-icons.png"
 
 export const ActionBlock = () => {
     const [width, height] = useViewport()
-    console.log(height, "altura")
     return (
 
         <div
@@ -23,11 +23,17 @@ export const ActionBlock = () => {
             <div
                 className="actionBlock__actions"
             >
-                <ActionButton text="Vídeo en directe" />
-                <ActionButton text="Photo/Vídeo" />
+                <ActionButton text="Vídeo en directe"
+                    iconStyles={{backgroundImage: `url(${iconCollection})`, backgroundPosition:"0 0", width: "24px", height: "24px" }}
+                />
+                <ActionButton text="Photo/Vídeo"
+                    iconStyles={{backgroundImage: `url(${iconCollection})`, backgroundPosition:"0 -125px", width: "24px", height: "24px" }}
+                />
                 {height > 700 &&
                     (width < 1100 || width > 1124) &&
-                    <ActionButton text="Sentiment/activitat" />}
+                    <ActionButton text="Sentiment/activitat"
+                        iconStyles={{backgroundImage: `url(${iconCollection})`, backgroundPosition:"0 -25px", width: "24px", height: "24px" }}
+                    />}
             </div>
         </div>
 

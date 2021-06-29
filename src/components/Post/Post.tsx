@@ -7,8 +7,10 @@ import { readyPosts } from "../Main/Index";
 import { time_ago } from '../Utils/time_ago'
 import { useViewport } from '../Utils/useViewport'
 import styled from "styled-components"
-//import ReactPhotoGrid from 'react-photo-grid'
+import FbImageLibrary from "../../react-fb-image-grid/src/index";
+import iconCollection3 from "../../media/facebook-icons3.png"
 //import FbImageLibrary from "react-fb-image-grid";
+
 
 const src = "https://source.unsplash.com/random"
 interface Post {
@@ -25,7 +27,8 @@ export const Post: React.FC<Post> = ({ post }) => {
             setPostWidth(postRef.current.getBoundingClientRect().width)
         }
     }, [width])
-    const photos = useMemo(() => Array(3).fill(0).map((_, index) => src + "?sig=" + Math.random() * 9999999999), [])
+    const getRandomNum = () => Math.floor(Math.random() * 6)
+    const photos = useMemo(() => Array(getRandomNum()).fill(0).map((_, index) => src + "?sig=" + Math.random() * 9999999999), [])
     return (
         <div
             ref={postRef}
@@ -57,13 +60,14 @@ export const Post: React.FC<Post> = ({ post }) => {
 
             </div>
 
-            {/* <div style={{ maxHeight: "500px" }}>
-                {!!post.image_count &&
-                    <FbImageLibrary images={photos}
-                        hideOverlay={true}
-                    />
-                }
-            </div> */}
+                   
+            {!!post.image_count &&
+                <FbImageLibrary images={photos}
+                    hideOverlay={true}
+                />
+            }
+            
+
             <div
                 className="post__info"
             >
@@ -79,10 +83,17 @@ export const Post: React.FC<Post> = ({ post }) => {
                     <ActionButton
                         text="M'agrada"
                         customStyles={{ paddingLeft: "12px", paddingRight: "12px" }}
+                        iconStyles={{backgroundImage: `url(${iconCollection3})`, backgroundPosition:"0 -168px", width: "18px", height: "18px" }}
                     />
                     <ActionButton
                         text="Comenta"
                         customStyles={{ paddingLeft: "12px", paddingRight: "12px" }}
+                        iconStyles={{backgroundImage: `url(${iconCollection3})`, backgroundPosition:"0 -130px", width: "18px", height: "18px" }}
+                    />
+                    <ActionButton
+                        text="Comparteix"
+                        customStyles={{ paddingLeft: "12px", paddingRight: "12px" }}
+                        iconStyles={{backgroundImage: `url(${iconCollection3})`, backgroundPosition:"0 -187px", width: "18px", height: "18px" }}
                     />
                 </div>
             </div>

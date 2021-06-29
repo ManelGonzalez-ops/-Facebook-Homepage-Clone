@@ -5,6 +5,7 @@
     overflow: scroll;
     padding: 8px;
     padding-top: 10px;
+    padding-right: 2px;
     //height: 100vh;
     //#bcc0c4
      border-radius: 5px;
@@ -53,10 +54,11 @@
         flex: 1;
         display: flex;
         justify-content: space-around;
-        top: -2px;
+        top: -10px;
         position: relative;
         padding: 0 4px;
         padding-right: 0;
+        
     }
 
     &__body {

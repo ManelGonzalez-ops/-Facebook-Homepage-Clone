@@ -13,6 +13,7 @@ export const ConfigHeader: React.FC<configHeader> = ({ title, handleGoBack }) =>
             <IconWrapper
                 height={36}
                 width={36}
+                
             >
                 <MdKeyboardBackspace
                     onClick={handleGoBack}

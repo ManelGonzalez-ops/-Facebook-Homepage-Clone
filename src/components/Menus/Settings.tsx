@@ -13,6 +13,10 @@ import { RiMessage2Fill } from "react-icons/ri"
 import { Accesibility } from './settings/Accesibility'
 import { Help } from './settings/Help'
 import { Keyboard } from './settings/Keyboard'
+import { MdSettings } from 'react-icons/md'
+import { AiFillQuestionCircle } from 'react-icons/ai'
+import { FaMoon } from 'react-icons/fa'
+import { useFakeData } from '../../Context'
 //icons
 //MdSettings
 //AiFillQuestionCircle
@@ -173,17 +177,38 @@ const transitionStyles = {
 interface menuDinamicView {
     handleGoForward: (id: number) => void
 }
-const Principal: React.FC<menuDinamicView> = ({ handleGoForward }): any => {
 
+const links = [
+    {
+        id: 2,
+        name: "Configuració y Privacitat",
+        Icon: MdSettings
+    },
+    {
+        id: 3,
+        name: "Help & Support",
+        Icon: AiFillQuestionCircle
+    },
+    {
+        id: 4,
+        name: "Display & Accesibility",
+        Icon: FaMoon
+    }
+]
+const Principal: React.FC<menuDinamicView> = ({ handleGoForward }): any => {
+    const { data: { messenger, loading } } = useFakeData()
+    if (loading) {
+        return <p>Loading...</p>
+    }
     return (
         <>
             <ListItemBig
                 image={<img
                     className="listItem--big__image"
-                    src="https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_1280.png" />}
+                    src={messenger[0].userImage} />}
                 renderText={() => <TextMultilineBig
-                    title="Julia Pavan"
-                    subtitle="comeme el culo"
+                    title={messenger[0].full_name}
+                    subtitle="Mostra el teu perfil"
                 />}
 
             />
@@ -208,14 +233,15 @@ const Principal: React.FC<menuDinamicView> = ({ handleGoForward }): any => {
                 <Separator />
             </div>
             {
-                [2, 3, 4].map((id, index) => (
+                links.map(({ id, Icon, name }, index) => (
                     <ListItem
                         key={index}
-                        renderText={() => "Julia Pavan"}
-                        image={
-                            < img
-                                className="listItem__image"
-                                src="https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_1280.png" />
+                        renderText={() => name}
+                        type="icon"
+                        icon={
+                            <IconWrapper>
+                                <Icon />
+                            </IconWrapper>
                         }
                         endIcon={
                             <IoIosArrowForward
